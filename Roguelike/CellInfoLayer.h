@@ -18,6 +18,5 @@ namespace uut
 		bool IsBlocked(int x, int y) const { return Get(x, y).blocked; }
 
 		void Update(float deltaTime) override {}
-		void DrawLayer(Graphics* graphics) const override {}
 	};
 }

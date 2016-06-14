@@ -45,6 +45,8 @@ namespace uut
 		auto layer2 = _tilemap->AddLayer<TilesetLayer>("Objects");
 		auto layer3 = _tilemap->AddLayer<ObjectLayer>("Characters");
 		auto layer4 = _tilemap->AddLayer<CellInfoLayer>("Passability");
+		_tileLayers << WeakPtr<TilesetLayer>(layer1) << WeakPtr<TilesetLayer>(layer2);
+		_objectLayer = layer3;
 
 		auto tileset = new Tileset();
 		tileset->SetTexture(_cache->Load<Texture2D>("rogueliketiles.png"));
@@ -117,12 +119,17 @@ namespace uut
 		{
 			_graphics->SetMaterial(Graphics::MT_TRANSPARENT);
 			_graphics->SetProjection(Graphics::PM_2D);
-			if (_font)
-				_graphics->PrintText(Vector2(10, 10), 15, "qwertyuiopasdfghjklzxcvbnm", _font, Color32::Black);
+// 			if (_font)
+// 				_graphics->PrintText(Vector2(10, 10), 15, "qwertyuiopasdfghjklzxcvbnm", _font, Color32::Black);
 			_graphics->Flush();
 
-			if (_tilemap)
-				_tilemap->Draw(_graphics);
+			for (auto& layer : _tileLayers)
+			{
+				if (layer && layer->IsVisible())
+					layer->DrawLayer(_graphics);
+			}
+			if (_objectLayer)
+				_objectLayer->DrawLayer(_graphics);
 			_graphics->Flush();
 
 			_gui->SetupCamera();
