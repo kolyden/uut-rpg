@@ -8,10 +8,9 @@
 
 namespace uut
 {
-	class ObjectLayer;
 	class Tilemap;
 	class Player;
-	class TilesetLayer;
+	class TilemapRender;
 
 	class SampleApp : public Application
 	{
@@ -25,8 +24,7 @@ namespace uut
 		SharedPtr<Graphics> _graphics;
 		SharedPtr<Font> _font;
 		SharedPtr<Tilemap> _tilemap;
-		List<WeakPtr<TilesetLayer>> _tileLayers;
-		WeakPtr<ObjectLayer> _objectLayer;
+		List<WeakPtr<TilemapRender>> _tilemapRenders;
 		SharedPtr<Player> _player;
 
 		Timer _timer;

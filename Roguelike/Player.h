@@ -5,7 +5,7 @@
 namespace uut
 {
 	class Texture2D;
-	class CellInfoLayer;
+	class BlockedLayer;
 
 	enum class  Direction
 	{
@@ -15,19 +15,24 @@ namespace uut
 	class Player : public ObjectLayerItem
 	{
 	public:
-		Player(Texture2D* tex, CellInfoLayer* passability);
+		Player(Texture2D* tex, BlockedLayer* passability);
 
 		void Update(float deltaTime) override;
-		void Move(Direction dir);
-		void Move(int dx, int dy);
+
+		bool Move(Direction dir);
+		bool MoveTo(const IntVector2& position);
+
+		bool TravelTo(const IntVector2& position);
+
 		void Draw(Graphics* graphics) const override;
 
 	protected:
 		SharedPtr<Texture2D> _texture;
-		WeakPtr<CellInfoLayer> _passability;
+		WeakPtr<BlockedLayer> _passability;
 		bool _moving;
-		Direction _moveDir;
+		Vector2 _movingDelta;
 		float _time;
 		Vector2 _offset;
+		List<IntVector2> _path;
 	};
 }

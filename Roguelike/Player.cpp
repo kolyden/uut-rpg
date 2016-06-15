@@ -3,12 +3,12 @@
 #include <Video/Texture2D.h>
 #include <Tilemap/Tilemap.h>
 #include <Video/Graphics.h>
-#include "CellInfoLayer.h"
 #include "MapDoor.h"
+#include <Tilemap/BlockedLayer.h>
 
 namespace uut
 {
-	Player::Player(Texture2D* tex, CellInfoLayer* passability)
+	Player::Player(Texture2D* tex, BlockedLayer* passability)
 		: _texture(tex)
 		, _passability(passability)
 		, _moving(false)
@@ -18,7 +18,26 @@ namespace uut
 	void Player::Update(float deltaTime)
 	{
 		if (!_moving)
+		{
+			while (!_path.IsEmpty())
+			{
+				if (_path[0] == _position)
+					_path.RemoveAt(0);
+				else
+				{
+					if (!MoveTo(_path[0]))
+					{
+						_path.Clear();
+						return;
+					}
+
+					_path.RemoveAt(0);
+					return;
+				}
+			}
+
 			return;
+		}
 
 		const float moveTime = 0.1f;
 
@@ -31,21 +50,16 @@ namespace uut
 		else
 		{
 			const float t = 1.0f - _time / moveTime;
-			const auto& size = _layer->GetTilemap()->GetCellSize();
-			switch (_moveDir)
-			{
-			case Direction::West: _offset = Vector2::Scale(size, Vector2(+t, 0)); break;
-			case Direction::East: _offset = Vector2::Scale(size, Vector2(-t, 0)); break;
-			case Direction::North: _offset = Vector2::Scale(size, Vector2(0, -t)); break;
-			case Direction::South: _offset = Vector2::Scale(size, Vector2(0, +t)); break;
-			}
+			Vector2 size = _layer->GetTilemap()->GetCellSize();
+			size.y *= -1;
+			_offset = -Vector2::Scale(size, _movingDelta*t);
 		}
 	}
 
-	void Player::Move(Direction dir)
+	bool Player::Move(Direction dir)
 	{
 		if (_moving)
-			return;
+			return false;
 
 		static const Dictionary<Direction, IntVector2> dirOffset = {
 			{ Direction::West, IntVector2(-1, 0) },
@@ -56,11 +70,11 @@ namespace uut
 
 		IntVector2 offset;
 		if (!dirOffset.TryGetValue(dir, offset))
-			return;
+			return false;
 
 		const IntVector2 newPos = _position + offset;
-		if (_passability->IsBlocked(newPos.x, newPos.y))
-			return;
+		if (_passability->Get(newPos.x, newPos.y) > 0)
+			return false;
 
 		auto item = _layer->GetItem(newPos);
 		if (item != nullptr)
@@ -69,23 +83,64 @@ namespace uut
 			{
 				auto door = dynamic_cast<MapDoor*>(item);
 				if (door == nullptr)
-					return;
+					return false;
 
 				door->SetOpened(true);
-				return;
+				return false;
 			}
 		}
 
-		_position = newPos;
 		_moving = true;
-		_moveDir = dir;
+		_movingDelta = newPos - _position;
 		_time = 0;
+		_position = newPos;
 		Update(0);
+
+		return true;
 	}
 
-	void Player::Move(int dx, int dy)
+	bool Player::MoveTo(const IntVector2& newPos)
 	{
-		SetPosition(_position + IntVector2(dx, dy));
+		if (_moving)
+			return false;
+
+		const IntVector2 offset = newPos - _position;
+		if (offset == IntVector2::Zero)
+			return false;
+
+		if (_passability->Get(newPos.x, newPos.y) > 0)
+			return false;
+
+		auto item = _layer->GetItem(newPos);
+		if (item != nullptr)
+		{
+			if (item->IsBlocked())
+			{
+				auto door = dynamic_cast<MapDoor*>(item);
+				if (door == nullptr)
+					return false;
+
+				door->SetOpened(true);
+				return false;
+			}
+		}
+
+		_moving = true;
+		_movingDelta = newPos - _position;
+		_time = 0;
+		_position = newPos;
+		Update(0);
+
+		return true;
+	}
+
+	bool Player::TravelTo(const IntVector2& position)
+	{
+		if (_moving)
+			return false;
+
+		_path.Clear();
+		return _passability->MakePath(_position, position, _path);
 	}
 
 	void Player::Draw(Graphics* graphics) const
