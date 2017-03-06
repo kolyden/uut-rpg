@@ -8,9 +8,9 @@
 
 namespace uut
 {
-	class Tilemap;
-	class Player;
-	class TilemapRender;
+// 	class Tilemap;
+// 	class Player;
+// 	class TilemapRender;
 
 	class SampleApp : public Application
 	{
@@ -22,8 +22,8 @@ namespace uut
 
 		SharedPtr<Graphics> _graphics;
 		SharedPtr<Font> _font;
-		SharedPtr<Tilemap> _tilemap;
-		List<WeakPtr<TilemapRender>> _tilemapRenders;
+// 		SharedPtr<Tilemap> _tilemap;
+// 		List<WeakPtr<TilemapRender>> _tilemapRenders;
 // 		SharedPtr<Player> _player;
 
 		virtual void OnInit() override;

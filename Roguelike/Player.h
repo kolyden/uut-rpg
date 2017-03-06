@@ -1,11 +1,8 @@
 #pragma once
-#include <Tilemap/ObjectLayer.h>
 #include <Core/Math/Vector2.h>
 
 namespace uut
 {
-	class Texture2D;
-	class BlockedLayer;
 }
 
 namespace uutRPG

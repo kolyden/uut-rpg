@@ -3,16 +3,9 @@
 #include <Resources/ResourceLoader.h> // TODO: fix link bug
 #include <Windows.h>
 #include <Video/BitmapFont.h>
-#include <Tilemap/Tilemap.h>
-#include <Tilemap/TilesetLayer.h>
-#include <Tilemap/Tileset.h>
-#include <Tilemap/ObjectLayer.h>
-// #include <Tilemap/TilesetLayerRender.h>
-// #include <Tilemap/ObjectLayerRender.h>
 #include "CellInfoLayer.h"
 #include "Player.h"
 #include "MapDoor.h"
-#include <Tilemap/BlockedLayer.h>
 #include <Core/Time.h>
 
 namespace uut
@@ -99,8 +92,8 @@ namespace uut
 
 	void SampleApp::OnFrame()
 	{
-		if (_tilemap)
-			_tilemap->Update(Time::GetDeltaTime());
+// 		if (_tilemap)
+// 			_tilemap->Update(Time::GetDeltaTime());
 
 // 		if (_player)
 // 		{

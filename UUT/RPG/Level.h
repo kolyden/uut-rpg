@@ -1,25 +1,33 @@
 #pragma once
-#include <Core/Object.h>
+#include <Resources/Resource.h>
+#include <Core/Collections/List.h>
+#include <Core/Math/Vector2.h>
 
 namespace uutRPG
 {
 	using namespace uut;
 
-	class LevelIndex;
+	class LevelLayer;
 
-	class Level : public Object
+	class Level : public Resource
 	{
-		UUT_OBJECT(uutRPG, Level, Object)
+		UUT_OBJECT(uutRPG, Level, Resource)
 	public:
 		Level();
 
-		virtual int GetDirectionsCount() const = 0;
-		virtual LevelIndex GetCellNeighbor(const LevelIndex& index, int direction) const = 0;
+		void SetSize(const Vector2& size);
+		const Vector2& GetSize() const;
 
-		virtual bool IsIndexValid(const LevelIndex& index) const = 0;
+		bool AddLayer(const SharedPtr<LevelLayer>& layer);
+		bool InsertLayer(int index, const SharedPtr<LevelLayer>& layer);
+
+		uint GetLayerCount() const;
+		SharedPtr<LevelLayer> GetLayer(int index) const;
+
+		virtual void Update(float deltaTime);
 
 	protected:
-		LevelIndex CreateIndex(uintptr_t data);
-		LevelIndex CreateIndex(void* data);
+		List<SharedPtr<LevelLayer>> _layers;
+		Vector2 _size;
 	};
 }

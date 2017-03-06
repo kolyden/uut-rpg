@@ -1,9 +1,7 @@
 #pragma once
-#include <Tilemap/ObjectLayer.h>
 
 namespace uut
 {
-	class TilesetLayer;
 }
 
 namespace uutRPG

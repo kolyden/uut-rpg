@@ -4,75 +4,126 @@
     <Filter Include="Sources">
       <UniqueIdentifier>{950b2922-2d4e-490a-b229-28c670f58b31}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\RPG">
+      <UniqueIdentifier>{255dff73-1607-4f9c-b6eb-84fc9c3330cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Level">
+      <UniqueIdentifier>{0e4ebf9f-0a12-4975-908a-1c444a841c4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\RPG\Loaders">
+      <UniqueIdentifier>{dd559a34-580d-485d-8375-27dcc429406f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\UUT\RPG\Entity.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClCompile>
     <ClCompile Include="..\UUT\RPG\Item.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClCompile>
     <ClCompile Include="..\UUT\RPG\ItemContainer.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClCompile>
     <ClCompile Include="..\UUT\RPG\ItemSlot.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClCompile>
     <ClCompile Include="..\UUT\RPG\ItemType.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClCompile>
     <ClCompile Include="..\UUT\RPG\Level.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClCompile>
     <ClCompile Include="..\UUT\RPG\LevelIndex.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClCompile>
     <ClCompile Include="..\UUT\RPG\Quest.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClCompile>
     <ClCompile Include="..\UUT\RPG\Trait.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClCompile>
     <ClCompile Include="..\UUT\RPG\TraitContainer.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClCompile>
     <ClCompile Include="..\UUT\RPG\World.cpp">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UUT\RPG\RPGPlugin.cpp">
+      <Filter>Sources\RPG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UUT\RPG\LevelLayer.cpp">
+      <Filter>Sources\RPG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UUT\RPG\GridLayer.cpp">
+      <Filter>Sources\RPG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UUT\RPG\TilemapLayer.cpp">
+      <Filter>Sources\RPG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UUT\RPG\Tileset.cpp">
+      <Filter>Sources\RPG</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UUT\RPG\Loaders\TMXLevelLoader.cpp">
+      <Filter>Sources\RPG\Loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\UUT\RPG\Loaders\TSXTilesetLoader.cpp">
+      <Filter>Sources\RPG\Loaders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\UUT\RPG\World.h">
+      <Filter>Sources\RPG</Filter>
+    </ClInclude>
     <ClInclude Include="..\UUT\RPG\Entity.h">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClInclude>
     <ClInclude Include="..\UUT\RPG\Item.h">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClInclude>
     <ClInclude Include="..\UUT\RPG\ItemContainer.h">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClInclude>
     <ClInclude Include="..\UUT\RPG\ItemSlot.h">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClInclude>
     <ClInclude Include="..\UUT\RPG\ItemType.h">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClInclude>
     <ClInclude Include="..\UUT\RPG\Level.h">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClInclude>
     <ClInclude Include="..\UUT\RPG\LevelIndex.h">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClInclude>
     <ClInclude Include="..\UUT\RPG\Quest.h">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClInclude>
     <ClInclude Include="..\UUT\RPG\Trait.h">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClInclude>
     <ClInclude Include="..\UUT\RPG\TraitContainer.h">
-      <Filter>Sources</Filter>
+      <Filter>Sources\RPG</Filter>
     </ClInclude>
-    <ClInclude Include="..\UUT\RPG\World.h">
-      <Filter>Sources</Filter>
+    <ClInclude Include="..\UUT\RPG\RPGPlugin.h">
+      <Filter>Sources\RPG</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UUT\RPG\LevelLayer.h">
+      <Filter>Sources\RPG</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UUT\RPG\GridLayer.h">
+      <Filter>Sources\RPG</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UUT\RPG\TilemapLayer.h">
+      <Filter>Sources\RPG</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UUT\RPG\Tileset.h">
+      <Filter>Sources\RPG</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UUT\RPG\Loaders\TMXLevelLoader.h">
+      <Filter>Sources\RPG\Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\UUT\RPG\Loaders\TSXTilesetLoader.h">
+      <Filter>Sources\RPG\Loaders</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

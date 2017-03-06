@@ -31,14 +31,6 @@ namespace uutRPG
 		return _level.Lock();
 	}
 
-	LevelIndex LevelIndex::GetNeighbor(int direction) const
-	{
-		if (auto level = _level.Lock())
-			return level->GetCellNeighbor(*this, direction);
-
-		return Empty;
-	}
-
 	intptr_t LevelIndex::GetData() const
 	{
 		return _data;
@@ -51,6 +43,6 @@ namespace uutRPG
 
 	bool LevelIndex::IsValid() const
 	{
-		return !_level.Expired() && (_level.Lock())->IsIndexValid(*this);
+		return !_level.Expired();// && (_level.Lock())->IsIndexValid(*this);
 	}
 }

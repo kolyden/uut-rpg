@@ -20,26 +20,40 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\UUT\RPG\Entity.cpp" />
+    <ClCompile Include="..\UUT\RPG\GridLayer.cpp" />
     <ClCompile Include="..\UUT\RPG\Item.cpp" />
     <ClCompile Include="..\UUT\RPG\ItemContainer.cpp" />
     <ClCompile Include="..\UUT\RPG\ItemSlot.cpp" />
     <ClCompile Include="..\UUT\RPG\ItemType.cpp" />
     <ClCompile Include="..\UUT\RPG\Level.cpp" />
     <ClCompile Include="..\UUT\RPG\LevelIndex.cpp" />
+    <ClCompile Include="..\UUT\RPG\LevelLayer.cpp" />
+    <ClCompile Include="..\UUT\RPG\Loaders\TMXLevelLoader.cpp" />
+    <ClCompile Include="..\UUT\RPG\Loaders\TSXTilesetLoader.cpp" />
     <ClCompile Include="..\UUT\RPG\Quest.cpp" />
+    <ClCompile Include="..\UUT\RPG\RPGPlugin.cpp" />
+    <ClCompile Include="..\UUT\RPG\TilemapLayer.cpp" />
+    <ClCompile Include="..\UUT\RPG\Tileset.cpp" />
     <ClCompile Include="..\UUT\RPG\Trait.cpp" />
     <ClCompile Include="..\UUT\RPG\TraitContainer.cpp" />
     <ClCompile Include="..\UUT\RPG\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\UUT\RPG\Entity.h" />
+    <ClInclude Include="..\UUT\RPG\GridLayer.h" />
     <ClInclude Include="..\UUT\RPG\Item.h" />
     <ClInclude Include="..\UUT\RPG\ItemContainer.h" />
     <ClInclude Include="..\UUT\RPG\ItemSlot.h" />
     <ClInclude Include="..\UUT\RPG\ItemType.h" />
     <ClInclude Include="..\UUT\RPG\Level.h" />
     <ClInclude Include="..\UUT\RPG\LevelIndex.h" />
+    <ClInclude Include="..\UUT\RPG\LevelLayer.h" />
+    <ClInclude Include="..\UUT\RPG\Loaders\TMXLevelLoader.h" />
+    <ClInclude Include="..\UUT\RPG\Loaders\TSXTilesetLoader.h" />
     <ClInclude Include="..\UUT\RPG\Quest.h" />
+    <ClInclude Include="..\UUT\RPG\RPGPlugin.h" />
+    <ClInclude Include="..\UUT\RPG\TilemapLayer.h" />
+    <ClInclude Include="..\UUT\RPG\Tileset.h" />
     <ClInclude Include="..\UUT\RPG\Trait.h" />
     <ClInclude Include="..\UUT\RPG\TraitContainer.h" />
     <ClInclude Include="..\UUT\RPG\World.h" />

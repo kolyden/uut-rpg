@@ -1,10 +1,8 @@
 #include "Player.h"
 #include <Core/Math/Rect.h>
 #include <Video/Texture2D.h>
-#include <Tilemap/Tilemap.h>
 #include <Video/Graphics.h>
 #include "MapDoor.h"
-#include <Tilemap/BlockedLayer.h>
 
 namespace uutRPG
 {

@@ -17,8 +17,6 @@ namespace uutRPG
 
 		SharedPtr<Level> GetLevel() const;
 
-		LevelIndex GetNeighbor(int direction) const;
-
 		intptr_t GetData() const;
 		void* GetPtr() const;
 

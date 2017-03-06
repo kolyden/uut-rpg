@@ -1,10 +1,7 @@
 #pragma once
-#include <Tilemap/InfoLayer.h>
 
 namespace uutRPG
 {
-	using namespace uut;
-
 	struct CellInfo
 	{
 		bool blocked;
