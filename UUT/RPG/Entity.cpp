@@ -1,7 +1,7 @@
 #include "Entity.h"
 
-namespace uut { namespace rpg {
-
+namespace uutRPG
+{
 	UUT_OBJECT_IMPLEMENT(Entity)
 	{}
 
@@ -14,4 +14,4 @@ namespace uut { namespace rpg {
 		return _index;
 	}
 
-} }
+}

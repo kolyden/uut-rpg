@@ -1,7 +1,7 @@
 #include "Item.h"
 #include "ItemType.h"
 
-namespace uut { namespace rpg
+namespace uutRPG
 {
 
 	UUT_OBJECT_IMPLEMENT(Item)
@@ -12,4 +12,4 @@ namespace uut { namespace rpg
 	{
 	}
 
-} }
+}

@@ -1,10 +1,10 @@
 #include "CellInfoLayer.h"
 
-namespace uut
+namespace uutRPG
 {
-	UUT_OBJECT_IMPLEMENT(CellInfoLayer)
-	{}
-
-	CellInfoLayer::CellInfoLayer()
-	{}
+// 	UUT_OBJECT_IMPLEMENT(CellInfoLayer)
+// 	{}
+// 
+// 	CellInfoLayer::CellInfoLayer()
+// 	{}
 }

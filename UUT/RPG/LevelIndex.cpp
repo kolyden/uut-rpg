@@ -1,7 +1,10 @@
 #include "LevelIndex.h"
 #include "Level.h"
 
-namespace uut { namespace rpg {
+namespace uutRPG
+{
+	UUT_VALUETYPE_IMPLEMENT(LevelIndex)
+	{}
 
 	const LevelIndex LevelIndex::Empty;
 
@@ -10,15 +13,30 @@ namespace uut { namespace rpg {
 	{
 	}
 
-	LevelIndex::LevelIndex(Level* level, intptr_t data)
+	LevelIndex::LevelIndex(const SharedPtr<Level>& level, intptr_t data)
 		: _level(level)
 		, _data(data)
 	{
 	}
 
-	Level* LevelIndex::GetLevel() const
+	LevelIndex::LevelIndex(const SharedPtr<Level>& level, void* data)
+		: _level(level)
+		, _ptr(data)
 	{
-		return _level;
+
+	}
+
+	SharedPtr<Level> LevelIndex::GetLevel() const
+	{
+		return _level.Lock();
+	}
+
+	LevelIndex LevelIndex::GetNeighbor(int direction) const
+	{
+		if (auto level = _level.Lock())
+			return level->GetCellNeighbor(*this, direction);
+
+		return Empty;
 	}
 
 	intptr_t LevelIndex::GetData() const
@@ -26,10 +44,13 @@ namespace uut { namespace rpg {
 		return _data;
 	}
 
-	bool LevelIndex::IsValid() const
+	void* LevelIndex::GetPtr() const
 	{
-		return _level != nullptr && _level->IsIndexValid(*this);
+		return _ptr;
 	}
 
-}
+	bool LevelIndex::IsValid() const
+	{
+		return !_level.Expired() && (_level.Lock())->IsIndexValid(*this);
+	}
 }

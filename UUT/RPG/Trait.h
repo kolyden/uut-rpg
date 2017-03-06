@@ -2,12 +2,13 @@
 #include <Core/Object.h>
 #include <Core/HashString.h>
 
-namespace uut { namespace rpg
+namespace uutRPG
 {
+	using namespace uut;
 
 	class Trait : public Object
 	{
-		UUT_OBJECT(Trait, Object)
+		UUT_OBJECT(uutRPG, Trait, Object)
 	public:
 		Trait();
 
@@ -32,5 +33,4 @@ namespace uut { namespace rpg
 		Trait* _trait;
 		uint16_t _value;
 	};
-
-} }
+}

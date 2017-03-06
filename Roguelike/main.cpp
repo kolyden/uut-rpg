@@ -7,12 +7,13 @@
 #include <Tilemap/TilesetLayer.h>
 #include <Tilemap/Tileset.h>
 #include <Tilemap/ObjectLayer.h>
-#include <Tilemap/TilesetLayerRender.h>
-#include <Tilemap/ObjectLayerRender.h>
+// #include <Tilemap/TilesetLayerRender.h>
+// #include <Tilemap/ObjectLayerRender.h>
 #include "CellInfoLayer.h"
 #include "Player.h"
 #include "MapDoor.h"
 #include <Tilemap/BlockedLayer.h>
+#include <Core/Time.h>
 
 namespace uut
 {
@@ -23,12 +24,13 @@ namespace uut
 
 	void SampleApp::OnInit()
 	{
-		_gui = new DebugGUI();
-		_graphics = new Graphics();
-		_graphics->SetProjection(Graphics::PM_2D);
-		_font = _cache->Load<Font>("Consolas.fnt");
+		ModuleInstance<ResourceCache> cache;
 
-		_tilemap = new Tilemap();
+		_graphics = SharedPtr<Graphics>::Make(Graphics::MT_OPAQUE, Graphics::PM_2D);
+		_font = cache->Load<Font>("Consolas.fnt");
+
+		/*
+		_tilemap = SharedPtr<Tilemap>::Make();
 		_tilemap->SetSize(IntVector2(26, 20));
 		_tilemap->SetCellSize(Vector2(30));
 		auto layer1 = _tilemap->AddLayer<TilesetLayer>("Background");
@@ -92,46 +94,35 @@ namespace uut
 		layer3->AddItem(IntVector2(5, 1), _player);
 		layer3->AddItem(IntVector2(5, 0), new MapDoor(layer2, 2, 3));
 		layer3->AddItem(IntVector2(8, 1), new MapDoor(layer2, 18, 19));
-
-		_timer.Start();
+		*/
 	}
 
 	void SampleApp::OnFrame()
 	{
-		_timer.Update();
-		_gui->NewFrame();
-
 		if (_tilemap)
-			_tilemap->Update(_timer.GetDeltaTime());
+			_tilemap->Update(Time::GetDeltaTime());
 
-		if (_player)
-		{
-			if (Input::IsKeyDown(SDL_SCANCODE_LEFT)) _player->Move(Direction::West);
-			if (Input::IsKeyDown(SDL_SCANCODE_RIGHT)) _player->Move(Direction::East);
-			if (Input::IsKeyDown(SDL_SCANCODE_UP)) _player->Move(Direction::North);
-			if (Input::IsKeyDown(SDL_SCANCODE_DOWN)) _player->Move(Direction::South);
-			if (Input::IsKeyDown(SDL_SCANCODE_H)) _player->TravelTo(IntVector2(5, 1));
-		}
+// 		if (_player)
+// 		{
+// 			if (Input::IsKeyDown(SDL_SCANCODE_LEFT)) _player->Move(Direction::West);
+// 			if (Input::IsKeyDown(SDL_SCANCODE_RIGHT)) _player->Move(Direction::East);
+// 			if (Input::IsKeyDown(SDL_SCANCODE_UP)) _player->Move(Direction::North);
+// 			if (Input::IsKeyDown(SDL_SCANCODE_DOWN)) _player->Move(Direction::South);
+// 			if (Input::IsKeyDown(SDL_SCANCODE_H)) _player->TravelTo(IntVector2(5, 1));
+// 		}
 
 		///////////////////////////////////////////////////////////////
-		_renderer->Clear(Color32(114, 144, 154));
-		if (_renderer->BeginScene())
+		ModuleInstance<Renderer> render;
+		if (render->BeginScene())
 		{
-			_graphics->SetMaterial(Graphics::MT_TRANSPARENT);
-			_graphics->SetProjection(Graphics::PM_2D);
-			_graphics->Flush();
+			_graphics->BeginRecord();
+			_graphics->Clear(Color32::Green);
+			
+			_graphics->EndRecord();
+			_graphics->Draw();
 
-			for (auto& layer : _tilemapRenders)
-			{
-				if (layer && layer->IsVisible())
-					layer->Draw(_graphics);
-			}
-			_graphics->Flush();
-
-			_gui->SetupCamera();
-			_gui->Draw();
-
-			_renderer->EndScene();
+			render->EndScene();
+			render->Present();
 		}
 	}
 }

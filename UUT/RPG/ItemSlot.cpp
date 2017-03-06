@@ -1,6 +1,6 @@
 #include "ItemSlot.h"
 
-namespace uut { namespace rpg
+namespace uutRPG
 {
 
 	UUT_OBJECT_IMPLEMENT(ItemSlot)
@@ -11,4 +11,4 @@ namespace uut { namespace rpg
 
 	}
 
-}}
+}

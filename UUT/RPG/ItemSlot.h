@@ -2,17 +2,17 @@
 #include <Core/Object.h>
 #include <Core/HashString.h>
 
-namespace uut { namespace rpg
+namespace uutRPG
 {
+	using namespace uut;
 
 	class ItemSlot : public Object
 	{
-		UUT_OBJECT(ItemSlot, Object)
+		UUT_OBJECT(uutRPG, ItemSlot, Object)
 	public:
 		ItemSlot();
 
 	protected:
 		HashString _name;
 	};
-
-}}
+}

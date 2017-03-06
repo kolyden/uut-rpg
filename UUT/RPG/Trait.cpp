@@ -1,7 +1,7 @@
 #include "Trait.h"
 
-namespace uut { namespace rpg {
-
+namespace uutRPG
+{
 	UUT_OBJECT_IMPLEMENT(Trait)
 	{}
 
@@ -9,4 +9,4 @@ namespace uut { namespace rpg {
 		: _max(0)
 	{
 	}
-} }
+}

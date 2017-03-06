@@ -2,12 +2,13 @@
 #include <Core/HashString.h>
 #include <Core/Object.h>
 
-namespace uut { namespace rpg
+namespace uutRPG
 {
+	using namespace uut;
 
 	class ItemType : public Object
 	{
-		UUT_OBJECT(ItemType, Object)
+		UUT_OBJECT(uutRPG, ItemType, Object)
 	public:
 		ItemType();
 
@@ -15,4 +16,4 @@ namespace uut { namespace rpg
 		HashString _name;
 	};
 
-} }
+}

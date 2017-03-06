@@ -1,25 +1,37 @@
 #pragma once
-#include <Core/Ptr.h>
+#include <Core/ValueType.h>
 
-namespace uut { namespace rpg {
+namespace uutRPG
+{
+	using namespace uut;
 
 	class Level;
 
-	class LevelIndex
+	class LevelIndex : public ValueType
 	{
+		UUT_VALUETYPE(uutRPG, LevelIndex, ValueType)
 	public:
 		LevelIndex();
-		LevelIndex(Level* level, intptr_t data);
+		LevelIndex(const SharedPtr<Level>& level, intptr_t data);
+		LevelIndex(const SharedPtr<Level>& level, void* data);
 
-		Level* GetLevel() const;
+		SharedPtr<Level> GetLevel() const;
+
+		LevelIndex GetNeighbor(int direction) const;
+
 		intptr_t GetData() const;
+		void* GetPtr() const;
+
 		bool IsValid() const;
 
 		static const LevelIndex Empty;
 
 	protected:
 		WeakPtr<Level> _level;
-		intptr_t _data;
+		union
+		{
+			intptr_t _data;
+			void* _ptr;
+		};
 	};
-
-} }
+}

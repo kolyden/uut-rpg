@@ -2,8 +2,9 @@
 #include <Core/Collections/List.h>
 #include <Core/Ptr.h>
 
-namespace uut { namespace rpg
+namespace uutRPG
 {
+	using namespace uut;
 
 	class Trait;
 
@@ -15,5 +16,4 @@ namespace uut { namespace rpg
 	protected:
 		List<SharedPtr<Trait>> _traits;
 	};
-
-} }
+}

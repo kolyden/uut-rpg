@@ -3,8 +3,9 @@
 #include "Item.h"
 #include <Core/Ptr.h>
 
-namespace uut { namespace rpg
+namespace uutRPG
 {
+	using namespace uut;
 
 	class ItemContainer
 	{
@@ -14,4 +15,4 @@ namespace uut { namespace rpg
 		List<SharedPtr<Item>> _data;
 	};
 
-} }
+}

@@ -1,11 +1,9 @@
 #pragma once
 
-namespace uut { namespace rpg
+namespace uutRPG
 {
-
 	class Quest
 	{
 	public:
 	};
-
-} }
+}

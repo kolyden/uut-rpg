@@ -2,12 +2,13 @@
 #include <Core/Object.h>
 #include "LevelIndex.h"
 
-namespace uut { namespace rpg
+namespace uutRPG
 {
+	using namespace uut;
 
 	class Entity : public Object
 	{
-		UUT_OBJECT(Entity, Object)
+		UUT_OBJECT(uutRPG, Entity, Object)
 	public:
 		Entity();
 
@@ -16,5 +17,4 @@ namespace uut { namespace rpg
 	protected:
 		LevelIndex _index;
 	};
-
-} }
+}

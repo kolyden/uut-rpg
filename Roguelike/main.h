@@ -20,14 +20,11 @@ namespace uut
 	protected:
 		static const int texSize = 402;
 
-		SharedPtr<DebugGUI> _gui;
 		SharedPtr<Graphics> _graphics;
 		SharedPtr<Font> _font;
 		SharedPtr<Tilemap> _tilemap;
 		List<WeakPtr<TilemapRender>> _tilemapRenders;
-		SharedPtr<Player> _player;
-
-		Timer _timer;
+// 		SharedPtr<Player> _player;
 
 		virtual void OnInit() override;
 		virtual void OnFrame() override;
